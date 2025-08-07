@@ -14,6 +14,8 @@ from pathlib import Path
 import environ
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
 env = environ.Env()
 environ.Env.read_env()
 
@@ -36,6 +38,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary',
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +57,7 @@ INSTALLED_APPS = [
     'reviews',
     'corsheaders',
 ]
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -158,5 +162,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET'),
+}
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
