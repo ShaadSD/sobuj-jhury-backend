@@ -32,7 +32,12 @@ SECRET_KEY = 'django-insecure-ndi&^%#yc9ih_x8zwkc1^h$8)xp46067e09a8!t-!=hkhgd7)e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    "sobuj-jhury-backend.onrender.com", 
+    "localhost",
+    "127.0.0.1",
+    "192.168.0.113",
+]
 
 
 # Application definition
@@ -69,8 +74,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ['https://sobuj-jhury-backend.onrender.com','https://*.127.0.0.1']
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",      
+    "http://192.168.0.113:5173",    
+    
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://192.168.0.113:5173",
+]
+CORS_ALLOW_CREDENTIALS = True
+
+
+
 ROOT_URLCONF = 'Sobuj_Jhury.urls'
 
 TEMPLATES = [
