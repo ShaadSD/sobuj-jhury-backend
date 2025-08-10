@@ -19,7 +19,7 @@ class MyCart(ListAPIView):
 
 
 class AddToCart(APIView):
-    permission_classes = [AllowAny]
+   
     def post(self,request,id):
         product = Product.objects.get(id=id)
         cart_cart = Cart.objects.filter(user = request.user).first()
